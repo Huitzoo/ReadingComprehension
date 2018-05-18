@@ -1,6 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+
 <html dir="ltr" lang="en">
     <head>
-        <meta charset="utf-8">
         <title>Iniciar Sesion</title>
         <link rel="icon" type="image/png" href="../img/fondo.png"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -15,7 +17,7 @@
           <div class="col-sm top-buffer">
             <div class="jumbotron color-login"> 
               <h1>Inicia Sesión. </h1>
-                <form>
+              <form method="get" action="servletAdmin">
                 <p class="lead">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nombre de Usuario:</label>
@@ -24,7 +26,7 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Contraseña:</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        <small id="emailHelp" class="form-text text-muted">No muestres a nadie tu contraseña.</small>
+                        <small id="emailHelp" class="form-text text-muted">No muestres a nadie tu contraseÃ±a.</small>
                     </div>
                 </p>
                 <button type="submit" class="btn btn-primary">Submit</button>
