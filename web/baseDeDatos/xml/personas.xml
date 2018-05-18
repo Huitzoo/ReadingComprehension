@@ -1,0 +1,20 @@
+﻿
+<USUARIOS>
+  
+  <PERSONA>
+    <id>1</id>
+    <nombre>Oscar Huitzilin Chavez Barrera</nombre>
+    <nombre_de_usuario>Huitzoo</nombre_de_usuario>
+    <contra>oscar1234</contra>
+    <rol>1</rol>
+  </PERSONA>
+  <PERSONA>
+    <id>2</id>
+    <nombre>Luis Angel</nombre>
+    <apellido>Salinas Hernandez</apellido>
+    <nombre_de_usuario>luis.saller</nombre_de_usuario>
+    <contra>luis1234</contra>
+    <rol>1</rol>
+  </PERSONA>
+  
+</USUARIOS>

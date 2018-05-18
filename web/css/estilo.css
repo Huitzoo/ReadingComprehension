@@ -5,22 +5,22 @@
 .content:before {
   content: "";
   position: fixed;
-  left: 100px;
+  left: 0px;
   right: 0;
   z-index: -1;
   display: block;
-  background-image: url('../img/fondo.jpg');
-  width: 1200px;
-  height: 1000px;
+  background-image: url('../img/marvel.jpg');
+  width: 1600px;
+  height: 1200px;
   filter: blur(5px);
 }
 .content {
-  position: fixed;
   left: 0;
   right: 0;
   z-index: 0;
 }
 
 .color-login{
-    background-color: blue;
+    background-color: rgba(13,177,255,0.8);
+    box-shadow: 5px 10px #888888;
 }

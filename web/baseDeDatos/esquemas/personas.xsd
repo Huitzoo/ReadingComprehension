@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="USUARIOS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="PERSONA">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:unsignedInt" />
+              <xs:element name="nombre" type="xs:string" />
+              <xs:element minOccurs="0" name="apellido" type="xs:string" />
+              <xs:element name="nombre_de_usuario" type="xs:string" />
+              <xs:element name="contra" type="xs:string" />
+              <xs:element name="rol" type="xs:unsignedInt"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

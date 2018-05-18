@@ -5,21 +5,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Usuario {
-
+        
+        int id;
+        int rol;
 	String name;
-	int age;
-	int id;
-
-	public String getName() {
-		return name;
+        String contra;
+        String apellidos;
+        String nombre_de_usuario;
+        
+        public int getId() {
+		return id;
 	}
-
+        
 	@XmlElement
-	public void setName(String name) {
-		this.name = name;
+	public void setRol(int age) {
+		this.age = rol;
 	}
-
-	public int getAge() {
+        public int getAge() {
 		return age;
 	}
 
@@ -27,16 +29,15 @@ public class Usuario {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-	public int getId() {
-		return id;
+        
+        public int getAge() {
+		return age;
 	}
 
-	@XmlAttribute
-	public void setId(int id) {
-		this.id = id;
+	@XmlElement
+	public void setAge(int age) {
+		this.age = age;
 	}
-
 }
 
 

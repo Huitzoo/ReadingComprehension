@@ -5,10 +5,6 @@
  */
 package xml;
 
-/**
- *
- * @author huitz
- */
 public class xml2 {
     
 }
