@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html lang='es' dir='ltr'>
+   <head>
+      <meta charset='utf-8'>
+      <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
+      <link rel='stylesheet' href='css/dashboard.css' />
+      <title></title>
+   </head>
+   <body>
+      <nav class='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>
+         <a class='navbar-brand col-sm-3 col-md-2 mr-0' href='#'>El ABC de TOMMY</a>
+         <ul class='navbar-nav px-3'>
+            <li class='nav-item text-nowrap'>
+               <a class='nav-link' href='#'>Salir</a>
+            </li>
+         </ul>
+      </nav>
+      <div class='container-fluid'>
+         <div class='row'>
+            <nav class='col-md-2 d-none d-md-block bg-light sidebar'>
+               <div class='sidebar-sticky'>
+                  <ul class='nav nav-tabs flex-column' id='myTab' role='tablist'>
+                     <li class='nav-item'>
+                        <a class='nav-link active' id='principal-tab' data-toggle='tab' href='#principal' role='tab' aria-controls='principal' aria-selected='true'>
+                           <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-home'>
+                              <path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path>
+                              <polyline points='9 22 9 12 15 12 15 22'></polyline>
+                           </svg>
+                           Principal <span class='sr-only'>(current)</span>
+                        </a>
+                     </li>
+                     <li class='nav-item'>
+                        <a class='nav-link' id='maestros-tab' data-toggle='tab' href='#maestros' role='tab' aria-controls='maestros' aria-selected='false'>
+                           <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-users'>
+                              <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+                              <circle cx='9' cy='7' r='4'></circle>
+                              <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+                              <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+                           </svg>
+                           Maestros
+                        </a>
+                     </li>
+                     <li class='nav-item'>
+                        <a class='nav-link' id='alumnos-tab' data-toggle='tab' href='#alumnos' role='tab' aria-controls='alumnos' aria-selected='false'>
+                           <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-users'>
+                              <path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path>
+                              <circle cx='9' cy='7' r='4'></circle>
+                              <path d='M23 21v-2a4 4 0 0 0-3-3.87'></path>
+                              <path d='M16 3.13a4 4 0 0 1 0 7.75'></path>
+                           </svg>
+                           Alumnos
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+            <main role='main' class='col-md-9 ml-sm-auto col-lg-10 px-4'>
+               <div class='tab-content'>
+                  <div class='tab-pane active' id='principal' role='tabpanel' aria-labelledby='principal-tab'>
+                     <div class='d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom'>
+                        <h1 class='h2'>Administración</h1>
+                     </div>
+                     <p>
+                        Sistema para administrar a tus profesores y alumnos.
+                     </p>
+                     <p>
+                        Numero de maestros:
+                     </p>
+                     <p>
+                        Numero de alumnos:
+                     </p>
+                  </div>
+                  <div class='tab-pane' id='maestros' role='tabpanel' aria-labelledby='maestros-tab'>
+                     <div class='d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom'>
+                        <h1 class='h2'>Administración</h1>
+                     </div>
+                     <h2>Maestros</h2>
+                     <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#agregarMaestro'>
+                     <img src='package/build/svg/plus.svg'/>Agregar
+                     </button>
+                     <br /><br />
+                     <div class='table-responsive'>
+                        <table class='table table-striped table-sm'>
+                           <thead>
+                              <tr>
+                                 <th>id</th>
+                                 <th>Nombre</th>
+                                 <th>Apellidos</th>
+                                 <th>Correo</th>
+                                 <th>Asignatura</th>
+                                 <th>Opciones</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td>
+                                    <button type='button' class='btn btn-info'>
+                                    <img src='package/build/svg/pencil.svg'/>
+                                    </button>
+                                    <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#delete'>
+                                    <img src='package/build/svg/x.svg'/>
+                                    </button>
+                                    <div class='modal fade' id='delete' tabindex='-1' role='dialog' aria-labelledby='delete' aria-hidden='true'>
+                                      <div class='modal-dialog modal-dialog-centered' role='document'>
+                                         <div class='modal-content'>
+                                            <div class='modal-header'>
+                                               <h5 class='modal-title' id='exampleModalLongTitle'>Eliminar</h5>
+                                               <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                               <span aria-hidden='true'>&times;</span>
+                                               </button>
+                                            </div>
+                                             <div class='modal-body'>
+                                               ¿Esta seguro de eliminar a "nombre"?
+                                             </div>
+                                             <div class='modal-footer'>
+                                                <button id='eliminar' type='submit' class='btn btn-danger'>Eliminar</button>
+                                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                             </div>
+                                           </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <div class='tab-pane' id='alumnos' role='tabpanel' aria-labelledby='alumnos-tab'>
+                     <div class='d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom'>
+                        <h1 class='h2'>Administración</h1>
+                     </div>
+                     <h2>Alumnos</h2>
+                     <div class='table-responsive'>
+                        <table class='table table-striped table-sm'>
+                           <thead>
+                              <tr>
+                                 <th>#</th>
+                                 <th>Header</th>
+                                 <th>Header</th>
+                                 <th>Header</th>
+                                 <th>Header</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>1,001</td>
+                                 <td>Lorem</td>
+                                 <td>ipsum</td>
+                                 <td>dolor</td>
+                                 <td>sit</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </main>
+         </div>
+      </div>
+      <!--Seccion de modals-->
+      <div class='modal fade' id='agregarMaestro' tabindex='-1' role='dialog' aria-labelledby='agregarMaestro' aria-hidden='true'>
+         <div class='modal-dialog modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+               <div class='modal-header'>
+                  <h5 class='modal-title' id='exampleModalLongTitle'>Agregar</h5>
+                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                  </button>
+               </div>
+               <form>
+                  <div class='modal-body'>
+                     <div class='form-group'>
+                        <label for='nombre'>Nombre</label>
+                        <input required name='nombre' type='text' class='form-control' id='nombre' placeholder='Ingresa tu nombre(s)'>
+                     </div>
+                     <div class='form-group'>
+                        <label for='apellidos'>Apellidos</label>
+                        <input required name='apellidos' type='text' class='form-control' id='apellidos' placeholder='Ingresa tus apellidos'>
+                     </div>
+                     <div class='form-group'>
+                        <label for='usuario'>Usuario</label>
+                        <input required name='usuario' type='text' class='form-control' id='usuario' placeholder='¿Cómo quieres que te llame?'>
+                     </div>
+                     <div class='form-group'>
+                        <label for='edad'>Edad</label>
+                        <input required name='edad' min='1' max='130' type='number' class='form-control' id='edad' placeholder='Ingresa tu edad'>
+                     </div>
+                     <div class='form-group'>
+                        <label class='mr-sm-2' for='sexo'>Género</label>
+                        <select name ='sexo' class='custom-select mb-2 mr-sm-2 mb-sm-0' id='sexo'>
+                           <option selected>Elige uno</option>
+                           <option value='1'>Masculino</option>
+                           <option value='2'>Femenino</option>
+                        </select>
+                     </div>
+                     <div class='form-group'>
+                        <label for='correo'>Correo</label>
+                        <input name='correo' required  type='email' class='form-control' id='correo' aria-describedby='emailHelp' placeholder='Ingresa tu email'>
+                     </div>
+                     <div class='form-group'>
+                        <label for='contra'>Contraseña</label>
+                        <input name='contra' required  type='password' class='form-control' id='contra' placeholder='Contraseña'>
+                     </div>
+                     <div class='form-group row'>
+                        <label for='cumple' class='col-3 col-form-label'>Cumpleaños</label>
+                        <div class='col-9'>
+                           <input name='cumple' required  class='form-control' type='date' id='cumple'>
+                        </div>
+                     </div>
+                  </div>
+                  <div class='modal-footer'>
+                     <button id='modalAgregar' type='submit' class='btn btn-success'>Agregar</button>
+                     <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <!-- Placed at the end of the document
+      @Override
+      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+          List<Product> products = someProductService.list();
+          String json = new Gson().toJson(products);
+
+          response.setContentType("application/json");
+          response.setCharacterEncoding("UTF-8");
+          response.getWriter().write(json);
+      }
+      The JS code:
+
+      $(document).on("click", "#somebutton", function() {        // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+          $.get("someservlet", function(responseJson) {          // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response JSON...
+              var $table = $("<table>").appendTo($("#somediv")); // Create HTML <table> element and append it to HTML DOM element with ID "somediv".
+              $.each(responseJson, function(index, product) {    // Iterate over the JSON array.
+                  $("<tr>").appendTo($table)                     // Create HTML <tr> element, set its text content with currently iterated item and append it to the <table>.
+                      .append($("<td>").text(product.id))        // Create HTML <td> element, set its text content with id of currently iterated product and append it to the <tr>.
+                      .append($("<td>").text(product.name))      // Create HTML <td> element, set its text content with name of currently iterated product and append it to the <tr>.
+                      .append($("<td>").text(product.price));    // Create HTML <td> element, set its text content with price of currently iterated product and append it to the <tr>.
+              });
+          });
+      });
+
+      so the pages load faster -->
+      <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+      <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js'></script>
+      <script src='https://unpkg.com/feather-icons/dist/feather.min.js'></script>
+      <script>
+         feather.replace()
+      </script>
+      <script>
+         $(function () {
+         $('#myTab li:first-child a').tab('show')
+         })
+      </script>
+      <script>
+           $(document).on("click", "#delete", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+               $.get("someservlet", function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
+                   $("#delete").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+               });
+           });
+       </script>
+   </body>
+</html>

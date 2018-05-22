@@ -1,8 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<usuario>
+<usuarios>
+    <persona>
+        <id>1</id>
+        <rol>1</rol>
+        <nombre>Oscar</nombre>
+        <contra>halo0316</contra>
+        <apellidos>Chavez_Barrera</apellidos>
+        <nombre_de_usuario>huitzoo</nombre_de_usuario>
+        <nacimiento>16/marzo/1997</nacimiento>
+        <sexo>Masculino</sexo>
+        <edad>21</edad>
+    </persona>
+    <persona>
+        <id>2</id>
+        <rol>2</rol>
+        <nombre>Jorge</nombre>
+        <contra>jorge12</contra>
+        <apellidos>Maldonado_Carpio</apellidos>
+        <nombre_de_usuario>Jorgi</nombre_de_usuario>
+        <nacimiento>18/diciembre/1997</nacimiento>
+        <sexo>Masculino</sexo>
+        <edad>20</edad>
+    </persona>
     <persona>
         <id>3</id>
-        <nombre_de_usuario>Santita</nombre_de_usuario>
         <rol>3</rol>
+        <nombre>Andres</nombre>
+        <contra>andy1234</contra>
+        <apellidos>Lopez_Sanchez</apellidos>
+        <nombre_de_usuario>Andy</nombre_de_usuario>
+        <nacimiento>20/diciembre/1996</nacimiento>
+        <sexo>Masculino</sexo>
+        <edad>10</edad>
     </persona>
-</usuario>
+    <persona>
+        <id>4</id>
+        <rol>3</rol>
+        <nombre>Aiko</nombre>
+        <contra>aiko1234</contra>
+        <apellidos>Lopez_Sanchez</apellidos>
+        <nombre_de_usuario>Aikin</nombre_de_usuario>
+        <nacimiento>15/septiembre/1996</nacimiento>
+        <sexo>Femenino</sexo>
+        <edad>12</edad>
+    </persona>
+</usuarios>

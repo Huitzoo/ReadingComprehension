@@ -4,9 +4,49 @@
         <servlet-name>servletAdmin</servlet-name>
         <servlet-class>controladores.servletAdmin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>mainServlet</servlet-name>
+        <servlet-class>controladores.mainServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>controladores.loginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>dashboardServlet</servlet-name>
+        <servlet-class>controladores.dashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminDashboardServlet</servlet-name>
+        <servlet-class>controladores.adminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxAdmin</servlet-name>
+        <servlet-class>controladores.ajaxAdmin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletAdmin</servlet-name>
         <url-pattern>/servletAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mainServlet</servlet-name>
+        <url-pattern>/mainServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dashboardServlet</servlet-name>
+        <url-pattern>/dashboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminDashboardServlet</servlet-name>
+        <url-pattern>/adminDashboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxAdmin</servlet-name>
+        <url-pattern>/ajaxAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

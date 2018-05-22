@@ -1,19 +1,26 @@
 package beans;
-import javax.xml.bind.annotation.XmlAttribute;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import beans.Persona;
+import java.util.List;
 
-@XmlRootElement
+@XmlRootElement(name = "usuarios")
 public class Usuario {
-        Persona persona;
-        
-        public Persona getPersona(){
-            return persona;
+    
+        private List<Persona> usuarios;
+ 
+        @XmlElement(name="persona")
+        public List<Persona> getUsuarios(){
+            return usuarios;
         }
-        @XmlElement
-        public void setPersona(Persona persona){
-            this.persona = persona;
+
+        public void setUsuarios(List<Persona> usuarios){
+            this.usuarios = usuarios;
+        }
+
+        @Override
+        public String toString() {
+            return usuarios.toString();
         }
 }
 

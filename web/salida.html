@@ -1,0 +1,15 @@
+out.println("$("#somebutton").click(function(){");
+out.println("$.ajax({");
+out.println("url:'GetUserServlet',");
+out.println("data:{name:'abc'},");
+out.println("type:'get',");
+out.println("cache:false,");
+out.println("success:function(data){");
+out.println("alert(data);");
+out.println("$('#somediv').text(responseText); ");
+out.println("},");
+out.println("error:function(){              ");
+out.println("alert('error');");
+out.println("}");
+out.println("}");
+out.println(");");

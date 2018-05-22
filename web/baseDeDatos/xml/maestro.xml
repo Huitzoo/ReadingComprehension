@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<maestros>
+    <maestro>
+        <id>2</id>
+        <email>jorgeenrique12@gmail.com</email>
+        <escuela>De_la_vida</escuela>
+        <asignatura>Yolismo</asignatura>
+    </maestro>
+</maestros>
