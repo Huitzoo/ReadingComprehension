@@ -1,15 +1,50 @@
-$("#somebutton").click(function(){
-$.ajax({
-url:'GetUserServlet',
-data:{name:'abc'},
-type:'get',
-cache:false,
-success:function(data){
-alert(data);
-$('#somediv').text(responseText); 
-},
-error:function(){              
-alert('error');
-}
-}
-);
+<div class='modal fade' id='editar' tabindex='-1' role='dialog' aria-labelledby='editar' aria-hidden='true'>
+<div class='modal-dialog modal-dialog-centered' role='document'>
+<div class='modal-content'>
+<div class='modal-header'>
+<h5 class='modal-title' id='exampleModalLongTitle'>Editar</h5>
+<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+<span aria-hidden='true'>&times;</span>
+</button>
+</div>
+<form>
+<div class='modal-body'>
+<div class='form-group'>
+<label for='nombre'>Nombre</label>
+<input required name='nombre' type='text' class='form-control' id='nombre' placeholder='Ingresa tu nombre(s)'>
+</div>
+<div class='form-group'>
+<label for='apellidos'>Apellidos</label>
+<input required name='apellidos' type='text' class='form-control' id='apellidos' placeholder='Ingresa tus apellidos'>
+</div>
+<div class='form-group'>
+<label for='usuario'>Usuario</label>
+<input required name='usuario' type='text' class='form-control' id='usuario' placeholder='¿Cómo quieres que te llame?'>
+</div>
+<div class='form-group'>
+<label for='edad'>Edad</label>
+<input required name='edad' min='1' max='130' type='number' class='form-control' id='edad' placeholder='Ingresa tu edad'>
+</div>
+<div class='form-group'>
+<label for='correo'>Correo</label>
+<input name='correo' required  type='email' class='form-control' id='correo' aria-describedby='emailHelp' placeholder='Ingresa tu email'>
+</div>
+
+<div class='form-group'>
+<label for='escuela'>Escuela</label>
+<input name='escuela' required  type='email' class='form-control' id='escuela' placeholder='Ingresa tu escuela'>
+</div>
+
+<div class='form-group'>
+<label for='asignatura'>Asignatura</label>
+<input name='asignatura' required  type='text' class='form-control' id='asignatura' aria-describedby='emailHelp' placeholder='Ingresa la asignatura'>
+</div>
+</div>
+<div class='modal-footer'>
+<button id='modalAgregar' type='submit' class='btn btn-warning'>editar</button>
+<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+</div>
+</form>
+</div>
+</div>
+</div>

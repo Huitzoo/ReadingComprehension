@@ -38,7 +38,6 @@ public class loginServlet extends HttpServlet {
             } catch (JAXBException ex) {
                 Logger.getLogger(loginServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(personas);
             for(int i = 0 ; i<personas.size();i++){
                 if(personas.get(i).getNombre_de_usuario().equals(usuario)){
                   bandera = 1;
@@ -74,11 +73,12 @@ public class loginServlet extends HttpServlet {
              //ServletContext path = request.getServletContext();
             PrintWriter out = response.getWriter(); 
             String error = "";
+            HttpSession session = request.getSession();
+            session.removeAttribute("usuario");
             pintar(error,out,response);
         }
     
     public void pintar(String error, PrintWriter out, HttpServletResponse response){
-            System.out.println(error);
             response.setContentType("text/html;charset=UTF-8"); //Responde al cliente. metodo mime
             out.println("<html dir='ltr' lang='en'>");
             out.println("<head>");

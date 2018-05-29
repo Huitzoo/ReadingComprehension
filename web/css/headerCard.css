@@ -1,0 +1,11 @@
+.headingOne {
+    background-image: url('../img/hederLecturas.jpg');
+    width: 1400px;
+    height: 65px;
+}
+
+.headingTwo {
+    background-image: url('../img/headerMemorama.jpg');
+    width: 1400px;
+    height: 65px;
+}

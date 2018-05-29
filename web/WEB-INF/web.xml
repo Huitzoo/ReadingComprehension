@@ -24,6 +24,18 @@
         <servlet-name>ajaxAdmin</servlet-name>
         <servlet-class>controladores.ajaxAdmin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>maestroDashboardServlet</servlet-name>
+        <servlet-class>controladores.maestroDashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>actividadesMaestroServlet</servlet-name>
+        <servlet-class>controladores.actividadesMaestroServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>gruposMaestroServlet</servlet-name>
+        <servlet-class>controladores.gruposMaestroServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletAdmin</servlet-name>
         <url-pattern>/servletAdmin</url-pattern>
@@ -47,6 +59,18 @@
     <servlet-mapping>
         <servlet-name>ajaxAdmin</servlet-name>
         <url-pattern>/ajaxAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>maestroDashboardServlet</servlet-name>
+        <url-pattern>/maestroDashboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actividadesMaestroServlet</servlet-name>
+        <url-pattern>/actividadesMaestroServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>gruposMaestroServlet</servlet-name>
+        <url-pattern>/gruposMaestroServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

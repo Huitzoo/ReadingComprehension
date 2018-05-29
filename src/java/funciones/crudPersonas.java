@@ -17,10 +17,8 @@ public class crudPersonas {
         int id = getIdPersona(path);
         path = path + "/personas.xml";
         File configFile = new File(path);
-        System.out.println(configFile);
         JAXBContext jaxbContext = JAXBContext.newInstance(Usuario.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        System.out.println(unmarshaller);
         Usuario usuario = (Usuario) unmarshaller.unmarshal(configFile);
         Persona persona = new Persona(id,2,datos,edad);
         List<Persona> personaList = usuario.getUsuarios();
@@ -41,10 +39,8 @@ public class crudPersonas {
         path = path + "/personas.xml";
         int id = getIdPersona(path);
         File configFile = new File(path);
-        System.out.println(configFile);
         JAXBContext jaxbContext = JAXBContext.newInstance(Usuario.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        System.out.println(unmarshaller);
         Usuario usuario = (Usuario) unmarshaller.unmarshal(configFile);
         Persona persona = new Persona(id,3,datos,edad);
         List<Persona> personaList = usuario.getUsuarios();
@@ -63,10 +59,9 @@ public class crudPersonas {
     
     //Elimina persona
     public static boolean eliminarPersona(String path,List<Persona> personaList) throws JAXBException{
-        int id = getIdPersona(path);
+        //int id = getIdPersona(path);
         path = path + "/personas.xml";
         File configFile = new File(path);
-        System.out.println(configFile);
         JAXBContext jaxbContext = JAXBContext.newInstance(Usuario.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         Usuario usuario = (Usuario) unmarshaller.unmarshal(configFile);
@@ -77,10 +72,25 @@ public class crudPersonas {
         return true;
     }
 
-
-    public static boolean editarPersona(String path,List<Persona> personaList,int rol)throws JAXBException{
-        
-        
+    public static boolean editarPersona(String path,List<String> datos,int edad, int id)throws JAXBException{
+        List<Persona> personas = obtenerXML.obtenerListaUsuarios(path);
+        path = path + "/personas.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Usuario.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Usuario usuario = (Usuario) unmarshaller.unmarshal(configFile);
+        for(int i = 0; i<personas.size();i++){
+            if(personas.get(i).getId()==id){
+                personas.get(i).setNombre(datos.get(0));
+                personas.get(i).setApellidos(datos.get(1));
+                personas.get(i).setNombre_de_usuario(datos.get(2));
+                personas.get(i).setEdad(edad);
+            }
+        }
+        usuario.setUsuarios(personas);
+        Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        marshaller.marshal(usuario, configFile);    
         return true;
     }
 }

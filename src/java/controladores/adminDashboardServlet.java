@@ -34,6 +34,12 @@ public class adminDashboardServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         Persona usuario = (Persona)session.getAttribute("usuario");
+        int bandera = 0;
+        //System.out.println(session.getAttribute("bandera"));
+        if(session.getAttribute("bandera")!=null){
+            bandera = (int)session.getAttribute("bandera");
+            session.removeAttribute("bandera");
+        }
         /*Obtener los maestros y alumnos*/
         ServletContext context = request.getServletContext();
         String path = context.getRealPath("/baseDeDatos/xml"); 
@@ -49,14 +55,11 @@ public class adminDashboardServlet extends HttpServlet {
         }
         List<String> salidaMaestros = principales.personasMaestros(personas, maestros);
         List<String> salidaAlumnos = principales.personasAlumnos(personas, alumnos);
-        System.out.println("dash");
-        System.out.println(salidaMaestros);
-        System.out.println("dash");
-        System.out.println(salidaAlumnos);
-        pintar(out,usuario,salidaMaestros,salidaAlumnos);
+        pintar(out,usuario,salidaMaestros,salidaAlumnos,bandera);
     }
    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException {
+        /*Agregar usuario*/
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
@@ -64,9 +67,10 @@ public class adminDashboardServlet extends HttpServlet {
         ServletContext context = request.getServletContext();
         String path = context.getRealPath("/baseDeDatos/xml");
         String[] datos = {request.getParameter("nombre"),request.getParameter("apellidos"),request.getParameter("contra"),request.getParameter("usuario"),request.getParameter("sexo"),request.getParameter("cumple"),request.getParameter("correo"),request.getParameter("asignatura"),request.getParameter("escuela")};
+        String mensajes = (String)request.getSession().getAttribute("mensaje");
+       
         int edad = Integer.parseInt(request.getParameter("edad"));
         try {
-            System.out.println("hola: "+path);
             if(crudPersonas.crearPersona(path,datos,edad)){
                 List<Persona> personas = null;
                 List<Maestro> maestros = null;
@@ -76,14 +80,14 @@ public class adminDashboardServlet extends HttpServlet {
                 alumnos = obtenerXML.obtenerListaAlumnos(path);
                 List<String> salidaMaestros = principales.personasMaestros(personas, maestros);
                 List<String> salidaAlumnos = principales.personasAlumnos(personas, alumnos); 
-                pintar(out,usuario,salidaMaestros,salidaAlumnos);
+                pintar(out,usuario,salidaMaestros,salidaAlumnos,3);
             }
         } catch (JAXBException ex) {
             Logger.getLogger(adminDashboardServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void pintar(PrintWriter out,Persona usuario,List<String> maestros,List<String> alumnos){
+    public void pintar(PrintWriter out,Persona usuario,List<String> maestros,List<String> alumnos,int bandera){
         out.println("<!DOCTYPE html>");
         out.println("<html lang='es' dir='ltr'>");
         out.println("<head>");
@@ -96,9 +100,23 @@ public class adminDashboardServlet extends HttpServlet {
         out.println("<body>");
         out.println("<nav class='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>");
         out.println("<a class='navbar-brand col-sm-3 col-md-2 mr-0' href='#'>El ABC de TOMMY</a>");
+        
+        if(bandera==1){
+            out.println("<div id='alerta' class='alert alert-success' role='alert'>");
+            out.println("Se ha editado con exito");
+            out.println("</div>");
+        }else if(bandera == 3){
+            out.println("<div class='alert alert-success' role='alert'>");
+            out.println("Se ha agregado correctamente");
+            out.println("</div>");
+        }
+        out.println("<script>");
+        out.println("$('#alerta').show().delay(3000).fadeOut();");
+        out.println("</script>");
+        
         out.println("<ul class='navbar-nav px-3'>");
         out.println("<li class='nav-item text-nowrap'>");
-        out.println("<a class='nav-link' href='#'>Salir</a>");
+        out.println("<a class='nav-link' href='loginServlet'>Salir</a>");
         out.println("</li>");
         out.println("</ul>");
         out.println("</nav>");
@@ -181,7 +199,7 @@ public class adminDashboardServlet extends HttpServlet {
             out.println("<td>"+s[6]+"</td>");
             out.println("<td>"+s[7]+"</td>");
             out.println("<td>");
-            out.println("<button type='button' class='btn btn-info'>");
+            out.println("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#editar"+s[0]+"'>");
             out.println("<img src='package/build/svg/pencil.svg'/>");
             out.println("</button>");
             out.println("<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#delete"+s[0]+"'>");
@@ -189,6 +207,54 @@ public class adminDashboardServlet extends HttpServlet {
             out.println("</button>");
             out.println("</td>");
             out.println("</tr>");
+            
+            out.println("<div class='modal fade' id='editar"+s[0]+"' tabindex='-1' role='dialog' aria-labelledby='editar"+s[0]+"' aria-hidden='true'>");
+            out.println("<div class='modal-dialog modal-dialog-centered' role='document'>");
+            out.println("<div class='modal-content'>");
+            out.println("<div class='modal-header'>");
+            out.println("<h5 class='modal-title' id='exampleModalLongTitle'>Editar</h5>");
+            out.println("<button type='button' class='close' data-dismiss='modal' aria-label='Close'>");
+            out.println("<span aria-hidden='true'>&times;</span>");
+            out.println("</button>");
+            out.println("</div>");
+            out.println("<div class='modal-body'>");
+            out.println("<div class='form-group'>");
+            out.println("<form name='formEditar"+s[0]+"' action='ajaxAdmin' method='post'>");
+            out.println("<label for='nombre"+s[0]+"'>Nombre</label>");
+            out.println("<input value='"+s[1]+"' name='nombre' type='text' class='form-control' id='nombre"+s[0]+"' placeholder='Ingresa tu nombre(s)'>");
+            out.println("</div>");
+            out.println("<div class='form-group'>");
+            out.println("<label for='apellidos"+s[0]+"'>Apellidos</label>");
+            out.println("<input value='"+s[2]+"' name='apellidos' type='text' class='form-control' id='apellidos"+s[0]+"' placeholder='Ingresa tus apellidos'>");
+            out.println("</div>");
+            out.println("<div class='form-group'>");
+            out.println("<label for='usuario"+s[0]+"'>Usuario</label>");
+            out.println("<input value='"+s[3]+"' name='usuario' type='text' class='form-control' id='usuario"+s[0]+"' placeholder='¿Cómo quieres que te llame?'>");
+            out.println("</div>");
+            out.println("<div class='form-group'>");
+            out.println("<label for='edad"+s[0]+"'>Edad</label>");
+            out.println("<input value='"+s[5]+"' name='edad' min='1' max='130' type='number' class='form-control' id='edad"+s[0]+"' placeholder='Ingresa tu edad'>");
+            out.println("</div>");
+            out.println("<div class='form-group'>");
+            out.println("<label for='correo"+s[0]+"'>Correo</label>");
+            out.println("<input value='"+s[6]+"' name='correo' type='email' class='form-control' id='correo"+s[0]+"' aria-describedby='emailHelp' placeholder='Ingresa tu email'>");
+            out.println("</div>");
+            out.println("<div class='form-group'>");
+            out.println("<label for='asignatura"+s[0]+"'>Asignatura</label>");
+            out.println("<input value='"+s[7]+"' name='asignatura' type='text' class='form-control' id='asignatura"+s[0]+"' aria-describedby='emailHelp' placeholder='Ingresa la asignatura'>");
+            out.println("<input name='id' value='"+s[0]+"' type='hidden'>");
+            out.println("<input name='rol' value='2' type='hidden'>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("<div class='modal-footer'>");
+            out.println("<button id='modalEditar"+s[0]+"' type='submit' class='btn btn-warning'>editar</button>");
+            out.println("<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>");
+            out.println("</form>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+            
             out.println("<div class='modal fade' id='delete"+s[0]+"' tabindex='-1' role='dialog' aria-labelledby='delete' aria-hidden='true'>");
             out.println("<div class='modal-dialog modal-dialog-centered' role='document'>");
             out.println("<div class='modal-content'>");
@@ -208,6 +274,30 @@ public class adminDashboardServlet extends HttpServlet {
             out.println("</div>");
             out.println("</div>");
             out.println("</div>");
+            /*
+            out.println("<script>");
+            out.println("$('#modalEditar"+s[0]+"').click(function(){");
+            out.println("var data = {");
+            out.println("nombre : $('#nombre"+s[0]+"').val(),");
+            out.println("apellidos : $('#apellidos"+s[0]+"').val(),");
+            out.println("usuario : $('#usuario"+s[0]+"').val(),");
+            out.println("edad : $('#edad"+s[0]+"').val(),");
+            out.println("correo : $('#correo"+s[0]+"').val(),");
+            out.println("asignatura : $('#asignatura"+s[0]+"').val(),");
+            out.println("id : "+s[0]+"");
+            out.println("}");
+            out.println("alert($('#nombre"+s[0]+"').val());");
+            out.println("$.ajax({");
+            out.println("url:'ajaxAdmin',");
+            out.println("type:'post',");
+            out.println("data: data,");
+            out.println("cache:false,");
+            out.println("success:(function(data){");
+            out.println("})");
+            out.println("})");
+            out.println("})");
+            out.println(" </script>");
+            */
             out.println("<script>");
             out.println("$('#eliminar"+s[0]+"').click(function(){");
             out.println("$.ajax({");
@@ -217,15 +307,12 @@ public class adminDashboardServlet extends HttpServlet {
             out.println("cache:false,");
             out.println("success:(function(data){");
             out.println("location.reload();");
-            //out.println("$.ajax({");
-            //out.println("url:'adminDashboardServlet',");
-            //out.println("type:'get',");
-            //out.println("cache:false,");
             out.println("})");
             out.println("})");
             out.println("})");
             out.println(" </script>");
         }
+        
         out.println("</tbody>");
         out.println("</table>");
         out.println("</div>");
@@ -296,8 +383,11 @@ public class adminDashboardServlet extends HttpServlet {
         out.println("<label for='usuario'>Usuario</label>");
         out.println("<input required name='usuario' type='text' class='form-control' id='usuario' placeholder='¿Cómo quieres que te llame?'>");
         out.println("</div>");
-        out.println("<div class='form-group'>");
         out.println("<label for='edad'>Edad</label>");
+        out.println("<div class='input-group mb-3'>");
+        out.println("<div class='input-group-append'>");
+        out.println("<span  for='edad' class='input-group-text '><img src='package/build/svg/pencil.svg'/></span>");
+        out.println("</div>");
         out.println("<input required name='edad' min='1' max='130' type='number' class='form-control' id='edad' placeholder='Ingresa tu edad'>");
         out.println("</div>");
         out.println("<div class='form-group'>");

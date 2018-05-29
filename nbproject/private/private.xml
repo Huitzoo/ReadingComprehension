@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/huitz/Documents/Huitzoo/ESCOM/Web/Proyecto/ReadingComprehension/web/css/estilo.css</file>
-            <file>file:/C:/Users/huitz/Documents/Huitzoo/ESCOM/Web/Proyecto/ReadingComprehension/src/java/funciones/crudAlumno.java</file>
-            <file>file:/C:/Users/huitz/Documents/Huitzoo/ESCOM/Web/Proyecto/ReadingComprehension/src/java/funciones/crudMaestro.java</file>
-            <file>file:/C:/Users/huitz/Documents/Huitzoo/ESCOM/Web/Proyecto/ReadingComprehension/src/java/funciones/crudPersonas.java</file>
-            <file>file:/C:/Users/huitz/Documents/Huitzoo/ESCOM/Web/Proyecto/ReadingComprehension/src/java/controladores/adminDashboardServlet.java</file>
-            <file>file:/C:/Users/huitz/Documents/Huitzoo/ESCOM/Web/Proyecto/ReadingComprehension/src/java/beans/Persona.java</file>
-            <file>file:/C:/Users/huitz/Documents/Huitzoo/ESCOM/Web/Proyecto/ReadingComprehension/src/java/funciones/principales.java</file>
-            <file>file:/C:/Users/huitz/Documents/Huitzoo/ESCOM/Web/Proyecto/ReadingComprehension/src/java/controladores/ajaxAdmin.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

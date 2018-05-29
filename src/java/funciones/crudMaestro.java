@@ -38,4 +38,25 @@ public class crudMaestro {
         marshaller.marshal(maestros, configFile);
         return true;
     }
+
+    public static void editarMaestro(String path, List<String> datos,int id) throws JAXBException {
+        List<Maestro> maestro = obtenerXML.obtenerListaMaestros(path);
+        path = path + "/maestro.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Maestros.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Maestros maestros = (Maestros)unmarshaller.unmarshal(configFile);
+        for(int i = 0; i<maestro.size();i++){
+            if(maestro.get(i).getId() == id){
+                maestro.get(i).setAsignatura(datos.get(4));
+                maestro.get(i).setEmail(datos.get(3));
+            }
+        }
+        
+        System.out.println(maestro);
+        maestros.setMaestros(maestro);
+        Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        marshaller.marshal(maestros, configFile);
+    }
 }

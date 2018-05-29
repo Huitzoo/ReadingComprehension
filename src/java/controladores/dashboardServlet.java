@@ -23,7 +23,9 @@ public class dashboardServlet extends HttpServlet {
             response.sendRedirect("adminDashboardServlet");
         }else if(rol == 2){
             //obtener lo de maestro que son alumnos y actividades
-            
+            session.setAttribute("usuario",usuario);
+            response.sendRedirect("maestroDashboardServlet");
+
         }else{
             //obtener lo de alumno que son sus actividades
         }

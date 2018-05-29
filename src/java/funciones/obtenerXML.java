@@ -14,7 +14,6 @@ public final class obtenerXML {
     public static List<Persona> obtenerListaUsuarios(String path) throws JAXBException{
         path = path+"/personas.xml";
         File configFile = new File(path);
-        System.out.println(configFile);
         JAXBContext jaxbContext = JAXBContext.newInstance(Usuario.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         Usuario usuario = (Usuario) unmarshaller.unmarshal(configFile);
@@ -25,7 +24,6 @@ public final class obtenerXML {
     public static List<Maestro> obtenerListaMaestros(String path) throws JAXBException{
         path = path+"/maestro.xml";
         File configFile = new File(path);
-        System.out.println(configFile);
         JAXBContext jaxbContext = JAXBContext.newInstance(Maestros.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         Maestros maestros = (Maestros) unmarshaller.unmarshal(configFile);
@@ -36,7 +34,6 @@ public final class obtenerXML {
     public static List<Alumno> obtenerListaAlumnos(String path) throws JAXBException{
         path = path+"/alumno.xml";
         File configFile = new File(path);
-        System.out.println(configFile);
         JAXBContext jaxbContext = JAXBContext.newInstance(Alumnos.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         Alumnos usuario = (Alumnos) unmarshaller.unmarshal(configFile);
@@ -47,7 +44,6 @@ public final class obtenerXML {
     public static List<Alumno> obtenerListaAlumnos(String path, int idMaestro) throws JAXBException{
         path = path+"/alumno.xml";
         File configFile = new File(path);
-        System.out.println(configFile);
         JAXBContext jaxbContext = JAXBContext.newInstance(Alumnos.class);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         Alumnos usuario = (Alumnos) unmarshaller.unmarshal(configFile);
@@ -57,4 +53,32 @@ public final class obtenerXML {
         return alumnos;
     }
     
+    public static List<Grupo> obtenerListaGrupos(String path, int idMaestro) throws JAXBException{
+        /*Esta función es para obtener los grupos de un maestro*/
+        path = path+"/grupos.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Grupos.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Grupos grupos = (Grupos) unmarshaller.unmarshal(configFile);
+        List<Grupo> grupoList = grupos.getGrupo();
+        if(grupoList == null){
+           return null;
+        }//Ahora se busca por maestros a los alumnos
+        List<Grupo> gruposS = (List<Grupo>) grupoList.stream().filter((grupo) -> (grupo.getMaestro() == idMaestro));
+        return gruposS;
+    }   
+
+    static List<Grupo> obtenerListaGrupos(String path) throws JAXBException { //To change body of generated methods, choose Tools | Templates.
+         /*Esta función es para obtener los grupos de un maestro*/
+        path = path+"/grupos.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Grupos.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Grupos grupos = (Grupos) unmarshaller.unmarshal(configFile);
+        List<Grupo> grupoList = grupos.getGrupo();
+        if(grupoList == null){
+           return null;
+        }//Ahora se busca por maestros a los alumnos
+        return grupoList;
+    }
 }
