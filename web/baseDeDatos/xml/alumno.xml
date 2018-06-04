@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <alumnos>
-    <alumno>
-        <id>3</id>
-        <idMaestro>2</idMaestro>
-        <grupo>2CM3</grupo>
-    </alumno>
-    <alumno>
-        <id>4</id>
-        <idMaestro>2</idMaestro>
-        <grupo>2CM3</grupo>
-    </alumno>
+    
 </alumnos>

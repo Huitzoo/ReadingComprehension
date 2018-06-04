@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package funciones;
+package consultas;
 
 import beans.Alumno;
 import beans.Grupo;
 import beans.Maestro;
 import beans.Persona;
-import funciones.obtenerXML;
+import consultas.obtenerXML;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +30,7 @@ public class principales {
     
     public static int getIdGrupo(String path) throws JAXBException{
         List<Grupo> grupos = obtenerXML.obtenerListaGrupos(path);
+        path = path + "/grupos.xml";
         int id = 0;
         if(grupos != null){
             Grupo ultimo = grupos.get(grupos.size()-1);
@@ -39,21 +40,38 @@ public class principales {
         return id;
     }
     
-    public static List<String> personasMaestros(List<Persona> personas,List<Maestro> maestros){
-        List<Persona> salidaPersonas = personas.stream().filter(e -> e.getRol()==2).collect(Collectors.toList());
-        List<String> salidaMaestros = new ArrayList<String>();
-        for(int i = 0; i<salidaPersonas.size();i++){
-            salidaMaestros.add(salidaPersonas.get(i).toString()+" "+maestros.get(i).toString());
+    public static String obtenerPersonaYAlumno(int id,String path) throws JAXBException{
+        List<Persona> personas = obtenerXML.obtenerListaUsuarios(path);
+        String persona = "";
+        for(Persona p : personas){
+            if(p.getId() == id){
+                persona = p.toString();
+                break;
+            }
         }
-        return salidaMaestros;
-    }
-     
-    public static List<String> personasAlumnos(List<Persona> personas, List<Alumno> alumnos){
-        List<Persona> salidaPersonas = personas.stream().filter(e -> e.getRol()==3).collect(Collectors.toList());
-        List<String> salidaAlumnos = new ArrayList<String>();
-        for(int i = 0; i<salidaPersonas.size();i++){
-            salidaAlumnos.add(salidaPersonas.get(i).toString()+" "+alumnos.get(i).toString());
+        List<Alumno> alumnos = obtenerXML.obtenerListaAlumnos(path);
+        String alumno = "";
+        for(Alumno a : alumnos){
+            if(a.getId() == id){
+                alumno = a.toString();
+                break;
+            }
         }
-        return salidaAlumnos;
+        return persona+" "+alumno;
     }
+    public static List<String> obtenerGrupo(List<Grupo> grupo){
+        List<String> grupos = new ArrayList<String>();
+        if(grupo != null){
+            for(Grupo g : grupo){
+                grupos.add(g.toString());
+            }
+        }else{
+            grupos.add("No tienes grupos registrados");
+        }
+        return grupos;
+    }
+    public static boolean cambiarGrupoMaestro(List<Alumno> alumno){
+        return true;
+    }
+    
 }

@@ -8,15 +8,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Grupo {
     
     int id;
-    int maestro;
+    String maestro;
     String nombre;
+    String asignatura;
     int alumnos;
 
-    public Grupo(int id, int maestro, String nombre, int alumnos) {
+    public Grupo(int id, String maestro, String nombre, int alumnos, String asignatura) {
         this.id = id;
         this.maestro = maestro;
         this.nombre = nombre;
         this.alumnos = alumnos;
+        this.asignatura = asignatura;
     }
 
     public Grupo() {
@@ -32,12 +34,12 @@ public class Grupo {
         this.id = id;
     }
 
-    public int getMaestro() {
+    public String getMaestro() {
         return maestro;
     }
     
     @XmlElement
-    public void setMaestro(int maestro) {
+    public void setMaestro(String maestro) {
         this.maestro = maestro;
     }
 
@@ -59,9 +61,19 @@ public class Grupo {
         this.alumnos = alumnos;
     }
 
+    public String getAsignatura() {
+        return asignatura;
+    }
+    
+    @XmlElement
+    public void setAsignatura(String asignatura) {
+        this.asignatura = asignatura;
+    }
+    
+    
     @Override
     public String toString() {
-        return "Grupo{" + "id=" + id + ", maestro=" + maestro + ", nombre=" + nombre + ", alumnos=" + alumnos +'}';
+        return id + " " + maestro + " " + nombre + " " + alumnos + " " + asignatura;
     }
     
     

@@ -6,7 +6,7 @@
 package controladores;
 
 import beans.Persona;
-import funciones.obtenerXML;
+import consultas.obtenerXML;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;

@@ -6,15 +6,12 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="maestro")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"id","email","escuela","asignatura"})
-
 public class Maestro {
 
         private int id;
         private String email;
         private String escuela;
-        private String asignatura;
-
+        private String especialidad;
 
         public Maestro(){
 
@@ -23,9 +20,9 @@ public class Maestro {
         public Maestro(int id, String[] datos){
             super();
             this.id = id;
-            this.email = datos[6];
-            this.escuela = datos[7];
-            this.asignatura = datos[8];
+            this.email = datos[0];
+            this.escuela = datos[2];
+            this.especialidad = datos[1];
             
         }
 
@@ -53,17 +50,17 @@ public class Maestro {
             this.escuela = escuela;
         }
 
-        public String getAsignatura() {
-            return asignatura;
+        public String getEspecialidad() {
+            return especialidad;
         }
 
-        public void setAsignatura(String asignatura) {
-            this.asignatura = asignatura;
+        public void setEspecialidad(String especialidad) {
+            this.especialidad = especialidad;
         }
         
         @Override
         public String toString() {
-            return email + " " + asignatura;
+            return email + " " + especialidad;
             //String[] salida = out.split(" ");
             //return salida;
         }

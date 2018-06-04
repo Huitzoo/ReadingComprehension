@@ -36,7 +36,7 @@ public class Grupos {
 
     @Override
     public String toString() {
-        return "Grupos{" + "grupo=" + grupo + '}';
+        return grupo.toString();
     }
     
 }

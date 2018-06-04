@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import funciones.obtenerXML;
+import consultas.obtenerXML;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -37,11 +37,10 @@ public class gruposMaestroServlet extends HttpServlet {
         String path = context.getRealPath("/baseDeDatos/xml"); 
         List<Grupo> grupos = new ArrayList<>();
         try {
-            grupos = obtenerXML.obtenerListaGrupos(path, usuario.getId());
+            grupos = obtenerXML.obtenerListaGrupos(path, Integer.toString(usuario.getId()));
         } catch (JAXBException ex) {
             Logger.getLogger(gruposMaestroServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         String salida = "";
         if(grupos == null){
             salida = "No has registrado ningun grupo";

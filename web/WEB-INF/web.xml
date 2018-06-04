@@ -21,8 +21,8 @@
         <servlet-class>controladores.adminDashboardServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ajaxAdmin</servlet-name>
-        <servlet-class>controladores.ajaxAdmin</servlet-class>
+        <servlet-name>ajaxMaestros</servlet-name>
+        <servlet-class>controladores.ajaxMaestros</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>maestroDashboardServlet</servlet-name>
@@ -35,6 +35,18 @@
     <servlet>
         <servlet-name>gruposMaestroServlet</servlet-name>
         <servlet-class>controladores.gruposMaestroServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxGrupos</servlet-name>
+        <servlet-class>controladores.ajaxGrupos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>autocompleteAjax</servlet-name>
+        <servlet-class>controladores.autocompleteAjax</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxAlumnos</servlet-name>
+        <servlet-class>controladores.ajaxAlumnos</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>servletAdmin</servlet-name>
@@ -57,8 +69,8 @@
         <url-pattern>/adminDashboardServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ajaxAdmin</servlet-name>
-        <url-pattern>/ajaxAdmin</url-pattern>
+        <servlet-name>ajaxMaestros</servlet-name>
+        <url-pattern>/ajaxMaestros</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>maestroDashboardServlet</servlet-name>
@@ -71,6 +83,18 @@
     <servlet-mapping>
         <servlet-name>gruposMaestroServlet</servlet-name>
         <url-pattern>/gruposMaestroServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxGrupos</servlet-name>
+        <url-pattern>/ajaxGrupos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>autocompleteAjax</servlet-name>
+        <url-pattern>/autocompleteAjax</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxAlumnos</servlet-name>
+        <url-pattern>/ajaxAlumnos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

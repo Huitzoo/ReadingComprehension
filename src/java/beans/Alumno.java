@@ -1,57 +1,80 @@
 package beans;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="alumno")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"id","idMaestro","grupo"})
+
 public class Alumno {
         
         private int id;
-	private int idMaestro;
+	private int idGrupo;
+	private String nombreMaestro;
         private String grupo;
-                
+        private String ano;
+        
         public Alumno(){
         }
 
-        public Alumno(int id, int idMaestro, String grupo) {
+        public Alumno(int id, String[] datos) {
             super();
             this.id = id;
-            this.idMaestro = idMaestro;
-            this.grupo = grupo;
+            this.idGrupo = Integer.parseInt(datos[3]);
+            this.nombreMaestro = datos[2];
+            this.grupo = datos[1];
+            this.ano = datos[0];
         }
 
         public int getId() {
             return id;
         }
-
+        
+        @XmlElement
         public void setId(int id) {
             this.id = id;
         }
 
-        public int getIdMaestro() {
-            return idMaestro;
+        public int getIdGrupo() {
+            return idGrupo;
+        }
+        
+        @XmlElement
+        public void setIdGrupo(int idGrupo) {
+            this.idGrupo = idGrupo;
         }
 
-        public void setIdMaestro(int idMaestro) {
-            this.idMaestro = idMaestro;
+        
+        public String getNombreMaestro() {
+            return nombreMaestro;
+        }
+        
+        @XmlElement
+        public void setNombreMaestro(String nombreMaestro) {
+            this.nombreMaestro = nombreMaestro;
         }
 
         public String getGrupo() {
             return grupo;
         }
-
+        
+        @XmlElement
         public void setGrupo(String grupo) {
             this.grupo = grupo;
         }
 
+        public String getAno() {
+            return ano;
+        }
+        
+        @XmlElement
+        public void setAno(String ano) {
+            this.ano = ano;
+        }
+
         @Override
         public String toString() {
-            return idMaestro + " " + grupo ;
+            return  nombreMaestro + " " + grupo + " "+ idGrupo +" "+ ano;
         }
- 
 }
     
 
