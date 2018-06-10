@@ -233,7 +233,6 @@ public final class obtenerXML {
         return maestros_alumnos;
     }
     
-    
     /*Esta función esta en un ajax, el cual me ayuda a ni repetir nombres de usuario
     el ajax esta en adminDashBoardServlet*/
     public static List<String> obtenerUsernames(String path) throws JAXBException{
@@ -245,4 +244,43 @@ public final class obtenerXML {
         return username;
     }
     
+    public static List<Actividad1> obtenerListaDeActividades1(String path) throws JAXBException{
+        path = path+"/actividades1.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Actividades1.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Actividades1 actividades1 = (Actividades1) unmarshaller.unmarshal(configFile);
+        List<Actividad1> actividades1List = actividades1.getActividades();
+        return actividades1List;
+    }
+    
+    public static List<Video> obtenerListaDeVideos(String path) throws JAXBException{
+        path = path+"/videos.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Videos.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Videos videos = (Videos) unmarshaller.unmarshal(configFile);
+        List<Video> videosList = videos.getVideos();
+        return videosList;
+    }
+    
+    public static int ultimoIdActividades1(String path) throws JAXBException{
+        List<Actividad1> actividades1= obtenerListaDeActividades1(path);
+        int id = 0;
+        if(actividades1 != null){
+            id = actividades1.get(actividades1.size()-1).getId();
+        }
+        id = id + 1;
+        return id;
+    }
+   
+    public static int ultimoIdVideos(String path) throws JAXBException{
+        List<Actividad1> videos = obtenerListaDeActividades1(path);
+        int id = 0;
+        if(videos != null){
+            id = videos.get(videos.size()-1).getId();
+        }
+        id = id + 1;
+        return id;
+    }
 }

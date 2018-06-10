@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+<title>ElABCdeTommy</title>
+<meta charset='UTF-8'>
+<link rel='stylesheet' href='css/dropzone.css'>
+<link rel='stylesheet' href='css/drop.css'>
+<link rel='stylesheet' href='css/color.css'>
+<link rel='stylesheet' href='css/bootstrap3_player.css'>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
+<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+<script type='text/javascript' src='js/dropzone.js'></script>
+<script type='text/javascript' src='js/bootstrap3_player.js'></script>
+</head>
+<body>
+<header style='margin-bottom: 80px;' class='navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar'>
+<nav class='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>
+<a class='navbar-brand col-sm-3 col-md-2 mr-0' href='#'>El ABC de TOMMY</a>
+<ul class='navbar-nav px-3'>
+<li class='nav-item text-nowrap'>
+<a class='nav-link' href='#'>Sign out</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class='bd-masthead' id='content' role='main'>
+<div class='container-fluid'>
+<div class='row'>
+<div class='col-sm-2'>
+</div>
+<div class='col-sm-8'>   
+<ul class='nav nav-pills mb-3' id='pills-tab' role='tablist'>
+<li class='nav-item'>
+<a class='nav-link btn btn-dark active' id='pills-home-tab' data-toggle='pill' href='#pills-home' role='tab' aria-controls='pills-home' aria-selected='true'>Lectura</a>
+</li>
+<li class='nav-item '>
+<a class='nav-link btn btn-dark' id='pills-profile-tab' data-toggle='pill' href='#pills-profile' role='tab' aria-controls='pills-profile' aria-selected='false'>Audio</a>
+</li>
+<li class='nav-item'>
+<a class='nav-link btn btn-dark' id='pills-contact-tab' data-toggle='pill' href='#pills-contact' role='tab' aria-controls='pills-contact' aria-selected='false'>Preguntas</a>
+</li>
+<li class='nav-item px-3'>
+<a class='nav-link btn btn-info' id='salvar' data-toggle='pill' href='#' role='tab' aria-controls='pills-contact' aria-selected='false'>Salvar</a>
+</li>
+</ul>
+<div class='tab-content jumbotron' style='background:linear-gradient(30deg, crimson,sienna, royalblue, indianred, purple);' id='pills-tabContent'>
+<div class='tab-pane fade show active' id='pills-home' role='tabpanel' aria-labelledby='pills-home-tab'>
+<h1 class='display-5' style='color: white'>Subir lectura.</h1>
+<h4 style='color: white'>Dropea una lectura y una imagen representativa.</h4>
+<hr class='my-4'>
+<form id='myDropzone' method='post' action='files' class='dropzone'>
+<div class='fallback'>
+<input name='file' type='file' />
+</div>
+</form>
+<hr class='my-4'>
+</div>  
+<div class='tab-pane fade' id='pills-profile' role='tabpanel' aria-labelledby='pills-profile-tab'>
+<div class='container'>
+<h1 class='display-5' style='color: white'>Convierte tu lectura en audio.</h1>
+<h4 style='color: white'>Da click en convertir si quieres convertir tu texto en audio.</h4><br>
+<div class='row'>
+<div class='col-sm-6'>
+<button class='btn btn-info' id='convertir'>Convertir</button>
+</div>
+<div class='col-sm-6'>
+<audio id ='audioS' controls>
+</audio>
+<script>
+$('#convertir').click(function(){
+$.ajax({
+url:'ajaxVoice',
+type:'post',
+cache:false,
+success:(function(data){
+setTimeout(2000);
+swal('Creado correctamente','Da click en el boton','success').then((value) => {
+$('#audioS').empty();
+$('#audioS').append('<source src=''+data+'' type='audio/wav'>')});
+})
+});
+});
+</script>
+</div>
+</div>
+</div>
+</div>
+<div class='tab-pane fade' id='pills-contact' role='tabpanel' aria-labelledby='pills-contact-tab'>
+<h1 class='display-5' style='color: white'>Agrega tus preguntas</h1>
+<h4 style='color: white'>Agrega preguntas relacionadas a tu lectura.</h4><br>
+<br><br>
+<form id='actividad'>
+<div class='container'>
+<div class='row'>
+<div class='col-sm-2'>
+<button type='button' id='agregarP' class='btn btn-success'>+Agregar</button>
+</div>
+<div class='col-sm-8' id='preguntas'>
+<input name='pregunta_0' class='form-control' type='text' placeholder='¿Que es un bit?'/>
+<br>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class='col-sm-2'>
+</div>
+</div>
+</div> 
+</main>
+<script src='http://code.jquery.com/jquery-latest.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js'></script>
+<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+<script>
+Dropzone.options.myDropzone = {
+maxFiles: 2,
+addRemoveLinks: true,
+acceptedFiles: '.txt,.png,.jpg',
+dictDefaultMessage: 'Dropea tu lectura .txt en este drop',
+init: function() {
+var self = this;
+self.options.addRemoveLinks = true;
+self.options.dictRemoveFile = 'Delete';
+this.on('complete', function (file) {
+setTimeout(3000);
+swal('Añadido correctamente','Da click en el boton','success').then((value) => {                                    
+setTimeout(1000);
+this.removeFile(file); 
+});
+});
+}    
+};
+</script>
+<script>
+var cont = 0;
+$('#agregarP').click(function(){
+cont = cont + 1;
+console.log(cont);
+$('#preguntas').append('<input class='form-control' type='text' name='pregunta_'+cont+'' placeholder='¿Que es un bit?' /><br>');
+});
+</script>
+<script>
+$('#salvar').click(function(){
+var preguntas = $('#actividad').serializeArray();
+var values = {};
+console.log(preguntas);
+$.each(preguntas,function(i,field){
+values[field.name] = field.value;     
+});
+console.log(values);
+$.ajax({
+url:'ajaxActividad1',
+data:{values},
+type:'post',
+cache:false,
+success:(function(data){
+setTimeout(2000);
+swal('Creado correctamente','Da click en el boton','success');
+})
+});
+});
+</script>
+</body>
+</html>
+

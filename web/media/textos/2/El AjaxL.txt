@@ -1,0 +1,3 @@
+Ajax es un archivo para crear peticiones
+web de manera asincrona entre el 
+cliente y el servidor.

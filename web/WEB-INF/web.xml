@@ -48,6 +48,34 @@
         <servlet-name>ajaxAlumnos</servlet-name>
         <servlet-class>controladores.ajaxAlumnos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>crearEditarActividad1Servlet</servlet-name>
+        <servlet-class>controladores.crearEditarActividad1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>files</servlet-name>
+        <servlet-class>controladores.files</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxVoice</servlet-name>
+        <servlet-class>controladores.ajaxVoice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxActividad1</servlet-name>
+        <servlet-class>controladores.ajaxActividad1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>maestroActividades1Servlet</servlet-name>
+        <servlet-class>controladores.maestroActividades1Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxVisualizarActividad1</servlet-name>
+        <servlet-class>controladores.ajaxVisualizarActividad1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>visualizarActividad1Servlet</servlet-name>
+        <servlet-class>controladores.visualizarActividad1Servlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletAdmin</servlet-name>
         <url-pattern>/servletAdmin</url-pattern>
@@ -95,6 +123,34 @@
     <servlet-mapping>
         <servlet-name>ajaxAlumnos</servlet-name>
         <url-pattern>/ajaxAlumnos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>crearEditarActividad1Servlet</servlet-name>
+        <url-pattern>/crearEditarActividad1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>files</servlet-name>
+        <url-pattern>/files</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxVoice</servlet-name>
+        <url-pattern>/ajaxVoice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxActividad1</servlet-name>
+        <url-pattern>/ajaxActividad1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>maestroActividades1Servlet</servlet-name>
+        <url-pattern>/maestroActividades1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxVisualizarActividad1</servlet-name>
+        <url-pattern>/ajaxVisualizarActividad1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>visualizarActividad1Servlet</servlet-name>
+        <url-pattern>/visualizarActividad1Servlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

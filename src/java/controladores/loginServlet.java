@@ -28,6 +28,7 @@ public class loginServlet extends HttpServlet {
             Persona user = new Persona();
             ServletContext context = request.getServletContext();
             String path = context.getRealPath("/baseDeDatos/xml");
+            //String path = "./web/baseDeDatos/xml";
             List<Persona> personas = null;
             int bandera = 0;
             PrintWriter out = response.getWriter();

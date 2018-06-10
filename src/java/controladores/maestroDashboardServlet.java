@@ -23,13 +23,15 @@ public class maestroDashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            Persona usuario = (Persona)session.getAttribute("usuario");
-            session.setAttribute("usuario", usuario);
-            pintar(out,usuario.getNombre());
-        }
+            if(session.getAttribute("usuario") != null){
+                PrintWriter out = response.getWriter();
+                Persona usuario = (Persona)session.getAttribute("usuario");
+                session.setAttribute("usuario", usuario);
+                pintar(out,usuario.getNombre());
+            }else{
+                response.sendRedirect("loginServlet");
+            }
     }
     
     public void pintar(PrintWriter out,String nombre){
@@ -71,7 +73,7 @@ public class maestroDashboardServlet extends HttpServlet {
         out.println("</div>");
         out.println("</div>");
         out.println("<div class='card-footer bg-success '>");
-        out.println("<a href=''  href='#' class='btn btn-info' role='button'>Ver mas</a>");
+        out.println("<a href='' class='btn btn-info' role='button'>Ver mas</a>");
         out.println("</div>");
         out.println("</div>");
         out.println("</div>");
@@ -89,7 +91,7 @@ public class maestroDashboardServlet extends HttpServlet {
         out.println("</div>");
         out.println("</div>");
         out.println("<div class='card-footer bg-danger '>");
-        out.println("<a href=''  href='' class='btn btn-info' role='button'>Ver mas</a>");
+        out.println("<a href='actividadesMaestroServlet' class='btn btn-info' role='button'>Ver mas</a>");
         out.println("</div>");
         out.println("</div>");
         out.println("</div>");
@@ -107,7 +109,7 @@ public class maestroDashboardServlet extends HttpServlet {
         out.println("</div>");
         out.println("</div>");
         out.println("<div class='card-footer bg-dark '>");
-        out.println("<a href=''  href='#' class='btn btn-info' role='button'>Ver mas</a>");
+        out.println("<a href='' class='btn btn-info' role='button'>Ver mas</a>");
         out.println("</div>");
         out.println("</div>");
         out.println("</div>");

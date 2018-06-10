@@ -39,27 +39,32 @@ public class adminDashboardServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-        Persona usuario = (Persona)session.getAttribute("usuario");
-        int bandera = 0;
-        if(session.getAttribute("bandera")!=null){
-            bandera = (int)session.getAttribute("bandera");
-            session.removeAttribute("bandera");
+        if(session.getAttribute("usuario") != null){
+                Persona usuario = (Persona)session.getAttribute("usuario");
+                session.setAttribute("usuario", usuario);
+                int bandera = 0;
+                if(session.getAttribute("bandera")!=null){
+                    bandera = (int)session.getAttribute("bandera");
+                    session.removeAttribute("bandera");
+                }
+                ServletContext context = request.getServletContext();
+                String path = context.getRealPath("/baseDeDatos/xml"); 
+                /*Obtener a mis usuarios*/
+                List<Persona> personas;
+                List<List<String>> alumnos_maestros = null;
+                List<Grupo> grupos = null;
+                try {
+                    personas = obtenerXML.obtenerListaUsuarios(path);
+                    alumnos_maestros = obtenerXML.obtenerMaestrosYAlumnos(path,personas);
+                    grupos = obtenerXML.obtenerListaGrupos(path);
+                } catch (JAXBException ex) {
+                    Logger.getLogger(adminDashboardServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                List<String> salidaGrupos = principales.obtenerGrupo(grupos);
+                pintar(out,usuario,alumnos_maestros.get(1),alumnos_maestros.get(0),salidaGrupos,bandera);
+        }else{
+            response.sendRedirect("loginServlet");
         }
-        ServletContext context = request.getServletContext();
-        String path = context.getRealPath("/baseDeDatos/xml"); 
-        /*Obtener a mis usuarios*/
-        List<Persona> personas;
-        List<List<String>> alumnos_maestros = null;
-        List<Grupo> grupos = null;
-        try {
-            personas = obtenerXML.obtenerListaUsuarios(path);
-            alumnos_maestros = obtenerXML.obtenerMaestrosYAlumnos(path,personas);
-            grupos = obtenerXML.obtenerListaGrupos(path);
-        } catch (JAXBException ex) {
-            Logger.getLogger(adminDashboardServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        List<String> salidaGrupos = principales.obtenerGrupo(grupos);
-        pintar(out,usuario,alumnos_maestros.get(1),alumnos_maestros.get(0),salidaGrupos,bandera);
     }
    
     @Override
