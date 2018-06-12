@@ -1,5 +1,7 @@
 package controladores;
 
+import beans.Actividad1;
+import beans.Actividad2;
 import beans.Alumno;
 import beans.Grupo;
 import beans.Maestro;
@@ -41,6 +43,8 @@ public class ajaxMaestros extends HttpServlet {
         List<Grupo> grupos = null;
         List<Alumno> alumnosM = null;
         List<Grupo> gruposM = null;
+        List<Actividad1> actividad1 = null;
+        List<Actividad2> actividad2 = null;
         /*Obtengo todas las listas que necesito para hacer el delete de un profesor*/
         /*Cuando se borra un profesor, se coloca S/A tanto a grupos como a alumnos*/
         try{
@@ -54,7 +58,6 @@ public class ajaxMaestros extends HttpServlet {
                 for(Alumno a : alumnos){
                     if(a.getNombreMaestro().split(" ")[0].equals(id)){
                         a.setNombreMaestro("Sin S/A");
-                        System.out.println("**********holis");
                     }
                 }
                 cruds.crudAlumno.editarAlumno(path,alumnos);
@@ -63,7 +66,6 @@ public class ajaxMaestros extends HttpServlet {
                 for(Grupo g : grupos){
                     if(g.getMaestro().split(" ")[0].equals(id)){
                         g.setMaestro("Sin S/A");
-                        System.out.println("**********holis grupos");
                     }
                 }
                 cruds.crudGrupo.editarGrupo(path,grupos);
@@ -87,6 +89,8 @@ public class ajaxMaestros extends HttpServlet {
         try {
             cruds.crudMaestro.eliminarMaestro(path, maestrosS);
             cruds.crudPersonas.eliminarPersona(path, personasS);
+            cruds.crudActividad1.eliminarActividad1(path, idM,0);
+            cruds.crudActividad2.eliminarActividad2(path, idM,0);
         } catch (JAXBException ex) {
             Logger.getLogger(ajaxMaestros.class.getName()).log(Level.SEVERE, null, ex);
         }

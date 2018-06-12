@@ -1,0 +1,14 @@
+
+.palabra {
+	width: 80%;
+	margin-left: 100px;
+}
+input {
+	width: 150%;
+    padding: 5px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

@@ -99,13 +99,17 @@ public class ajaxGrupos extends HttpServlet {
             datos.add(maestro);
             datos.add(asignatura);
             List<Alumno> alumnos = null;
+            List<Alumno> alumnosList = null;
             try {
                 //cruds.crudGrupo.editarGrupo();
                 alumnos = obtenerXML.obtenerListaAlumnos(path);
                 crudGrupo.editarGrupo(path, id, datos);
-                List<Alumno> alumnosList = alumnos.stream().filter(a -> a.getIdGrupo()== id).collect(Collectors.toList());
-                System.out.println(alumnosList);
-                crudAlumno.editarAlumno(path, datos, id, alumnosList,bandera);
+                if(alumnos != null){
+                    alumnosList = alumnos.stream().filter(a -> a.getIdGrupo()== id).collect(Collectors.toList());
+                    if(alumnosList != null){
+                        System.out.println(alumnosList);
+                        crudAlumno.editarAlumno(path, datos, id, alumnosList,bandera);
+                    }}
             } catch (JAXBException ex) {
                 Logger.getLogger(ajaxGrupos.class.getName()).log(Level.SEVERE, null, ex);
             }

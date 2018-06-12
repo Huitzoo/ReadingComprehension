@@ -6,6 +6,7 @@
 package consultas;
 
 import beans.Actividad1;
+import beans.Actividad2;
 import beans.Alumno;
 import beans.Grupo;
 import beans.Maestro;
@@ -78,6 +79,13 @@ public class principales {
         List<Actividad1> actividad = actividades.stream().filter(e->e.getId()==id).collect(Collectors.toList()); 
         return actividad.get(0);
     }
+    
+    public static Actividad2 obtenerActividad2(String path, int id) throws JAXBException{
+        List<Actividad2> actividades = obtenerXML.obtenerListaDeActividades2(path);
+        List<Actividad2> actividad = actividades.stream().filter(e->e.getId()==id).collect(Collectors.toList()); 
+        return actividad.get(0);
+    }
+    
     
     public static boolean cambiarGrupoMaestro(List<Alumno> alumno){
         return true;

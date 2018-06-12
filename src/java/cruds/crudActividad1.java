@@ -83,7 +83,27 @@ public class crudActividad1 {
         Actividades1 actividades1 = (Actividades1) unmarshaller.unmarshal(configFile);
         List<Actividad1> actividades1List = actividades1.getActividades();
         List<Actividad1> actividad = actividades.stream().filter(e -> e.getId() != id).collect(Collectors.toList());
-        System.out.println(actividad);
+        if(actividad == null){
+            actividad = new ArrayList<>();
+        }
+        actividades1.setActividades(actividad);
+        Marshaller marshaller = jaxbContext.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        marshaller.marshal(actividades1, configFile);
+    }
+    
+    public static void eliminarActividad1(String path,int id,int basura) throws JAXBException{
+        List<Actividad1> actividades = obtenerXML.obtenerListaDeActividades1(path);
+        path = path+"/actividades1.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Actividades1.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Actividades1 actividades1 = (Actividades1) unmarshaller.unmarshal(configFile);
+        List<Actividad1> actividades1List = actividades1.getActividades();
+        List<Actividad1> actividad = actividades.stream().filter(e -> e.getIdMaestro()!= id).collect(Collectors.toList());
+        if(actividad == null){
+            actividad = new ArrayList<>();
+        }
         actividades1.setActividades(actividad);
         Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

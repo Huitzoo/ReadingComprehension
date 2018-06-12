@@ -60,7 +60,10 @@ public class ajaxActividad1 extends HttpServlet {
             }
             List<String> preguntas = new ArrayList<>();
             for(String s : nombres){
-                preguntas.add(request.getParameter(s));
+                System.out.println(s);
+                if(!s.equals("id")){
+                    preguntas.add(request.getParameter(s));
+                }
             }
             List<String> datos = new ArrayList<>();
             datos.add(texto);

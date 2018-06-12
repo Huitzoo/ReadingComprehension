@@ -90,6 +90,16 @@ public class loginServlet extends HttpServlet {
             out.println("<link rel='stylesheet' href='css/estilo.css'>");
             out.println("</head>");
             out.println("<body>");
+                    
+            out.println("<nav class=\"navbar navbar-dark bg-dark static-top\" shadow'>");
+            out.println("<a class='navbar-brand col-sm-3 col-md-2 mr-0' href='#'>El ABC de TOMMY</a>");
+            out.println("<ul class='navbar-nav px-3'>");
+            out.println("<li class='nav-item text-nowrap'>");
+            //out.println("<a class='nav-link' href='loginServlet'>Salir</a>");
+            out.println("</li>");
+            out.println("</ul>");
+            out.println("</nav>");
+
             out.println("<main role='main' class='container'>");
             out.println("<div class='container align-items-center content'>");
             out.println("<div class='row'>");

@@ -22,7 +22,27 @@ public final class obtenerXML {
         List<Persona> personaList = usuario.getUsuarios();
         return personaList;
     }
-     
+    
+    public static List<Video> obtenerListaVideos(String path) throws JAXBException{
+        path = path+"/videos.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Videos.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Videos usuario = (Videos) unmarshaller.unmarshal(configFile);
+        List<Video> videoList = usuario.getVideos();
+        return videoList;
+    }
+    public static List<Video> obtenerListaVideos(String path, int actividad) throws JAXBException{
+        path = path+"/videos.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Videos.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Videos usuario = (Videos) unmarshaller.unmarshal(configFile);
+        List<Video> videoList = usuario.getVideos();
+        List<Video> videofinal = videoList.stream().filter(e -> e.getNumeroActividad() == actividad).collect(Collectors.toList());
+        
+        return videofinal;
+    }
     /*Funcion que me regresa la lista de alumnos segun sea el maestro*/
     public static List<Alumno> obtenerListaAlumnos(String path, int idMaestro) throws JAXBException{
         path = path+"/alumno.xml";
@@ -89,6 +109,7 @@ public final class obtenerXML {
             return null;
         }
         return alumnosList;
+   
     }
         
     /*Esta función es para obtener los grupos de un maestro*/ 
@@ -254,6 +275,16 @@ public final class obtenerXML {
         return actividades1List;
     }
     
+    public static List<Actividad2> obtenerListaDeActividades2(String path) throws JAXBException{
+        path = path+"/actividades2.xml";
+        File configFile = new File(path);
+        JAXBContext jaxbContext = JAXBContext.newInstance(Actividades2.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        Actividades2 actividades2 = (Actividades2) unmarshaller.unmarshal(configFile);
+        List<Actividad2> actividades1List = actividades2.getActividades();
+        return actividades1List;
+    }
+    
     public static List<Video> obtenerListaDeVideos(String path) throws JAXBException{
         path = path+"/videos.xml";
         File configFile = new File(path);
@@ -262,10 +293,12 @@ public final class obtenerXML {
         Videos videos = (Videos) unmarshaller.unmarshal(configFile);
         List<Video> videosList = videos.getVideos();
         return videosList;
-    }
+    } 
     
-    public static int ultimoIdActividades1(String path) throws JAXBException{
-        List<Actividad1> actividades1= obtenerListaDeActividades1(path);
+    /*Obtener los Id de los archivos xml*/
+    
+    public static int ultimoIdActividades2(String path) throws JAXBException{
+        List<Actividad2> actividades1= obtenerListaDeActividades2(path);
         int id = 0;
         if(actividades1 != null){
             id = actividades1.get(actividades1.size()-1).getId();
@@ -273,12 +306,22 @@ public final class obtenerXML {
         id = id + 1;
         return id;
     }
-   
+ 
     public static int ultimoIdVideos(String path) throws JAXBException{
         List<Actividad1> videos = obtenerListaDeActividades1(path);
         int id = 0;
         if(videos != null){
             id = videos.get(videos.size()-1).getId();
+        }
+        id = id + 1;
+        return id;
+    }
+    
+    public static int ultimoIdActividades1(String path) throws JAXBException{
+        List<Actividad1> actividades1= obtenerListaDeActividades1(path);
+        int id = 0;
+        if(actividades1 != null){
+            id = actividades1.get(actividades1.size()-1).getId();
         }
         id = id + 1;
         return id;

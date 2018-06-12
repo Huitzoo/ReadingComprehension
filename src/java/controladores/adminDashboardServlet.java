@@ -61,6 +61,7 @@ public class adminDashboardServlet extends HttpServlet {
                     Logger.getLogger(adminDashboardServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 List<String> salidaGrupos = principales.obtenerGrupo(grupos);
+                System.out.println(salidaGrupos.get(0));
                 pintar(out,usuario,alumnos_maestros.get(1),alumnos_maestros.get(0),salidaGrupos,bandera);
         }else{
             response.sendRedirect("loginServlet");
@@ -124,7 +125,7 @@ public class adminDashboardServlet extends HttpServlet {
         out.println("<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<nav class='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>");
+        out.println("<nav class=\"navbar navbar-dark bg-dark static-top\" shadow'>");
         out.println("<a class='navbar-brand col-sm-3 col-md-2 mr-0' href='#'>El ABC de TOMMY</a>");
         
         if(bandera==1){
@@ -235,7 +236,7 @@ public class adminDashboardServlet extends HttpServlet {
         out.println("<th>Fecha de nacimiento</th>");
         out.println("<th>Edad</th>");
         out.println("<th>Correo</th>");
-        out.println("<th>Escuela</th>");
+        out.println("<th>Asignatura</th>");
         out.println("<th>Opciones</th>");
         out.println("</tr>");
         out.println("</thead>");
@@ -568,7 +569,7 @@ public class adminDashboardServlet extends HttpServlet {
                 
                 out.println("<div class='form-group'>");
                 out.println("<label for='asignatura"+s[0]+"'>Asginatura</label>");
-                out.println("<input value='"+s[5]+"' name='asignatura' type='text' class='form-control' id='asignatura"+s[5]+"' placeholder='Ingresa la asignatura'>");
+                out.println("<input value='"+s[4]+"' name='asignatura' type='text' class='form-control' id='asignatura"+s[4]+"' placeholder='Ingresa la asignatura'>");
                 out.println("</div>");
                 
                 out.println("<div class='form-group'>");

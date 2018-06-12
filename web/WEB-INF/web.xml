@@ -76,6 +76,30 @@
         <servlet-name>visualizarActividad1Servlet</servlet-name>
         <servlet-class>controladores.visualizarActividad1Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ajaxAhorcado</servlet-name>
+        <servlet-class>controladores.ajaxAhorcado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>maestroActividades2Servlet</servlet-name>
+        <servlet-class>controladores.maestroActividades2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>visualizarActividad2Servlet</servlet-name>
+        <servlet-class>controladores.visualizarActividad2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxActividad2</servlet-name>
+        <servlet-class>controladores.ajaxActividad2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxVideo</servlet-name>
+        <servlet-class>controladores.ajaxVideo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ajaxVideo1</servlet-name>
+        <servlet-class>controladores.ajaxVideo1</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletAdmin</servlet-name>
         <url-pattern>/servletAdmin</url-pattern>
@@ -151,6 +175,30 @@
     <servlet-mapping>
         <servlet-name>visualizarActividad1Servlet</servlet-name>
         <url-pattern>/visualizarActividad1Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxAhorcado</servlet-name>
+        <url-pattern>/ajaxAhorcado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>maestroActividades2Servlet</servlet-name>
+        <url-pattern>/maestroActividades2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>visualizarActividad2Servlet</servlet-name>
+        <url-pattern>/visualizarActividad2Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxActividad2</servlet-name>
+        <url-pattern>/ajaxActividad2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxVideo</servlet-name>
+        <url-pattern>/ajaxVideo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ajaxVideo1</servlet-name>
+        <url-pattern>/ajaxVideo1</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

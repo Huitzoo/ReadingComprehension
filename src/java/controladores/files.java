@@ -43,12 +43,12 @@ public class files extends HttpServlet {
             Persona usuario = (Persona)session.getAttribute("usuario");
             System.out.println(session.getAttribute("usuario"));
             session.setAttribute("usuario",usuario);
-            String path = context.getRealPath("/").replace("\\build\\web\\","");
-            //String path = context.getRealPath("/");
-            //String img = "/media/img/"+usuario.getId();
-            //String text = "/media/textos/"+usuario.getId();
-            String img = "/web/media/img/"+usuario.getId();
-            String text = "/web/media/textos/"+usuario.getId();
+            //String path = context.getRealPath("/").replace("\\build\\web\\","");
+            String path = context.getRealPath("/");
+            String img = "/media/img/"+usuario.getId();
+            String text = "/media/textos/"+usuario.getId();
+            //String img = "/web/media/img/"+usuario.getId();
+            //String text = "/web/media/textos/"+usuario.getId();
             
             Boolean bandera = false;
             try {

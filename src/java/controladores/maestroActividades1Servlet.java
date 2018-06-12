@@ -69,7 +69,7 @@ public class maestroActividades1Servlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         
-        out.println("<nav class='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>");
+        out.println("<nav class=\"navbar navbar-dark bg-dark static-top\" shadow'>");
         out.println("<a class='navbar-brand col-sm-3 col-md-2 mr-0' href='#'>El ABC de TOMMY</a>");
         out.println("<ul class='navbar-nav px-3'>");
         out.println("<li class='nav-item text-nowrap'>");
@@ -77,7 +77,6 @@ public class maestroActividades1Servlet extends HttpServlet {
         out.println("</li>");
         out.println("</ul>");
         out.println("</nav>");
-        out.println("<br>");
         
         out.println("<main class='bd-masthead' id='content' role='main'>");
         out.println("<center>");
@@ -89,8 +88,46 @@ public class maestroActividades1Servlet extends HttpServlet {
         out.println("<a style='margin-rigth: 50px;' href='crearEditarActividad1Servlet' type='button' class='btn btn-light'>");
         out.println("<img src='package/build/svg/plus.svg'/>Agregar");
         out.println("</a>");
+        
+        out.println("<button style='margin-rigth: 50px;' type='button' class='btn btn-primary' data-toggle='modal' data-target='#addVideo'>");
+        out.println("<img src='package/build/svg/plus.svg'/>Agregar video");
+        out.println("</buton>"); 
+        out.println("</center>");
+ 
+
+        
+        out.println("<div class='modal fade' id='addVideo' tabindex='-1' role='dialog' aria-labelledby='addVideo' aria-hidden='true'>");
+        out.println("<div class='modal-dialog modal-dialog-centered' role='document'>");
+        out.println("<div class='modal-content'>");
+        out.println("<div class='modal-header'>");
+        out.println("<h5 class='modal-title' id='exampleModalLongTitle'>Agregar</h5>");
+        out.println("<button type='button' class='close' data-dismiss='modal' aria-label='Close'>");
+        out.println("<span aria-hidden='true'>&times;</span>");
+        out.println("</button>");
+        out.println("</div>");
+        
+        out.println("<form action='ajaxVideo1' method='post' enctype='multipart/form-data'>");
+        out.println("<div class='modal-body'>");
+        out.println("<div class='form-group'>");
+        out.println("<label for='nombre'>Nombre</label>");
+        out.println("<input required name='video' type='file' class='form-control' id='video'>");
+        out.println("</div>");
+       
+        out.println("<div class='modal-footer'>");
+        out.println("<button id='modalAgregar' type='submit' class='btn btn-success'>Agregar</button>");
+        out.println("<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>");
+        out.println("</div>");
+        out.println("</div>");
+        out.println("</form>");
+        out.println("</div>");
+        out.println("</div>");
+        out.println("</div>"); 
+        
         out.println("</center>");
         out.println("<br>");
+        
+        
+        
         
         out.println("<br>");
         out.println("<div class='container'>");

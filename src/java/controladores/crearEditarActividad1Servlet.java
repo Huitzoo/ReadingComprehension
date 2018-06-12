@@ -68,11 +68,6 @@ public class crearEditarActividad1Servlet extends HttpServlet {
     public static void pintar(PrintWriter out,Actividad1 actividad,int id){
 
         out.println("<!DOCTYPE html>");
-        out.println("<!--");
-        out.println("To change this license header, choose License Headers in Project Properties.");
-        out.println("To change this template file, choose Tools | Templates");
-        out.println("and open the template in the editor.");
-        out.println("-->");
         out.println("<html>");
         out.println("<head>");
         out.println("<title>ElABCdeTommy</title>");
@@ -85,8 +80,8 @@ public class crearEditarActividad1Servlet extends HttpServlet {
         out.println("<script type='text/javascript' src='js/dropzone.js'></script>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<header style='margin-bottom: 80px;' class='navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar'>");
-        out.println("<nav class='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>");
+        
+        out.println("<nav class=\"navbar navbar-dark bg-dark static-top\" shadow'>");
         out.println("<a class='navbar-brand col-sm-3 col-md-2 mr-0' href='#'>El ABC de TOMMY</a>");
         out.println("<ul class='navbar-nav px-3'>");
         out.println("<li class='nav-item text-nowrap'>");
@@ -94,7 +89,8 @@ public class crearEditarActividad1Servlet extends HttpServlet {
         out.println("</li>");
         out.println("</ul>");
         out.println("</nav>");
-        out.println("</header>");
+        out.println("<br>");
+        
         out.println("<main class='bd-masthead' id='content' role='main'>");
         out.println("<div class='container-fluid'>");
         out.println("<div class='row'>");

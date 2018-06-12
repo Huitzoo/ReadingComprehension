@@ -48,8 +48,8 @@ public class ajaxVoice extends HttpServlet {
             service.setUsernameAndPassword("db918bac-50af-46da-a518-99074312baf0","ksoxidNpCZWm");
             ServletContext context = request.getServletContext();
             String pathA = context.getRealPath("/");            
-            pathA = pathA.replace("\\build\\web\\","")+"/web/media/audios/"+usuario.getId();
-            //pathA = pathA+"/media/audios/"+usuario.getId();
+            //pathA = pathA.replace("\\build\\web\\","")+"/web/media/audios/"+usuario.getId();
+            pathA = pathA+"/media/audios/"+usuario.getId();
             
             File file = new File(pathA);
             if (!file.exists()) {
